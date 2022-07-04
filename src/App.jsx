@@ -25,6 +25,7 @@ function App() {
   },[])
   
   console.log(data);
+  const idIcon = data.weather?.[0].icon;
 
   const convertTemperature = () => {
     if(isCelcius){
@@ -54,9 +55,9 @@ function App() {
         </div>
         <div className="weatherInformation">
             <h1>{temperature} {isCelcius ? "°C" : "°F"}</h1>
-            <img src={`http://openweathermap.org/img/wn/${data?.weather?.[0]?.icon}@2x.png`} alt="" />
-            <p className="description">{data.weather?.[0]?.description}</p>
-            <h5>{data?.name}, {data.sys?.country}</h5>
+            <img src={`http://openweathermap.org/img/wn/${idIcon}@4x.png`} alt="" />
+            <p className="description"> {data.weather?.[0]?.description}</p>
+            <h5> <i className="fa-solid fa-location-crosshairs"></i> {data?.name}, {data.sys?.country}</h5>
         </div>
         <button onClick={convertTemperature}> °C | °F</button>
       </div>
